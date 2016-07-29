@@ -18,7 +18,7 @@ def create_cost_matrix(company_app, pm_app):
 		service_areas = {}
 		service_areas['sa_1'] = company[19]
 		service_areas['sa_2'] = company[69]
-		service_areas['sa_3'] = company[119]
+		service_areas['sa_3'] = company[118]
 
 		cost_matrix_row = []
 		name_of_companies.append(company_name)
@@ -62,7 +62,7 @@ def create_cost_matrix(company_app, pm_app):
 			project_type_match_score = 0
 			number_of_projects = 0
 			for key, service_area in service_areas.iteritems():
-				if service_area is not None:
+				if not pandas.isnull(service_area):
 					number_of_projects += 1
 					if service_area in pm_project_rankings:
 						project_type_match_score += pm_project_rankings[service_area]
@@ -79,8 +79,9 @@ def create_cost_matrix(company_app, pm_app):
 
 			skill_score = 0
 			for skill in list_of_skills:
-				skill_score += ((company_skills[skill]-pm_skills[skill])*(company_skills[skill]/sum_of_company_skill))
+				skill_score += ((company_skills[skill]-pm_skills[skill])*(float(company_skills[skill])/sum_of_company_skill))
 
+			print 'number of proj '+str(pm_name)+': '+str(number_of_projects)
 			print 'project_type_match_score-'+str(company_name)+', '+str(pm_name)+': '+str(project_type_match_score)
 			print 'skill_score-'+str(company_name)+', '+str(pm_name)+': '+str(skill_score)
 			cost = ((project_type_match_score/number_of_projects)**2)+skill_score
@@ -89,6 +90,9 @@ def create_cost_matrix(company_app, pm_app):
 			name_of_pms.add(pm_name)
 
 		cost_matrix.append(cost_matrix_row)
+		print '========================================'
+
+
 	cost_matrix.insert(0,list(name_of_pms))
 	cost_matrix.insert(0,name_of_companies)
 	return cost_matrix
