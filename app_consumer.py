@@ -81,16 +81,16 @@ def create_cost_matrix(company_app, pm_app):
 			for skill in list_of_skills:
 				skill_score += ((company_skills[skill]-pm_skills[skill])*(float(company_skills[skill])/sum_of_company_skill))
 
-			print 'number of proj '+str(pm_name)+': '+str(number_of_projects)
-			print 'project_type_match_score-'+str(company_name)+', '+str(pm_name)+': '+str(project_type_match_score)
-			print 'skill_score-'+str(company_name)+', '+str(pm_name)+': '+str(skill_score)
+			# print 'number of proj '+str(pm_name)+': '+str(number_of_projects)
+			# print 'project_type_match_score-'+str(company_name)+', '+str(pm_name)+': '+str(project_type_match_score)
+			# print 'skill_score-'+str(company_name)+', '+str(pm_name)+': '+str(skill_score)
 			cost = ((project_type_match_score/number_of_projects)**2)+skill_score
 
 			cost_matrix_row.append(cost)
 			name_of_pms.add(pm_name)
 
 		cost_matrix.append(cost_matrix_row)
-		print '========================================'
+		# print '========================================'
 
 
 	cost_matrix.insert(0,list(name_of_pms))
