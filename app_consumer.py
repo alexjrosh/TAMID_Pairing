@@ -13,7 +13,7 @@ def create_cost_matrix(company_app, pm_app):
 	name_of_pms = set()
 	cost_matrix = []
 
-	for company in company_app[1:]:
+	for company in company_app:
 		company_name = company[1]
 		service_areas = {}
 		service_areas['sa_1'] = company[19]
