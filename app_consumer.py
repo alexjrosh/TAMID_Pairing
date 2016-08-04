@@ -25,16 +25,16 @@ def create_cost_matrix(company_app, pm_app):
 
 		#skills
 		company_skills = {}
-		company_skills['internet_search'] = int(company[168])
-		company_skills['current_events'] = int(company[169])
-		company_skills['business'] = int(company[170])
-		company_skills['creativity'] = int(company[171])
-		company_skills['technology'] = int(company[172])
-		company_skills['sociability'] = int(company[173])
-		company_skills['communication'] = int(company[174])
-		company_skills['flexibility'] = int(company[175])
-		company_skills['presentation'] = int(company[176])
-		company_skills['working_with_a_team'] = int(company[177])
+		company_skills['internet_search'] = int(company[168]) if not pandas.isnull(company[168]) else 5
+		company_skills['current_events'] = int(company[169]) if not pandas.isnull(company[169]) else 5
+		company_skills['business'] = int(company[170]) if not pandas.isnull(company[170]) else 5
+		company_skills['creativity'] = int(company[171]) if not pandas.isnull(company[171]) else 5
+		company_skills['technology'] = int(company[172]) if not pandas.isnull(company[172]) else 5
+		company_skills['sociability'] = int(company[173]) if not pandas.isnull(company[173]) else 5
+		company_skills['communication'] = int(company[174]) if not pandas.isnull(company[174]) else 5
+		company_skills['flexibility'] = int(company[175]) if not pandas.isnull(company[175]) else 5
+		company_skills['presentation'] = int(company[176]) if not pandas.isnull(company[176]) else 5
+		company_skills['working_with_a_team'] = int(company[177]) if not pandas.isnull(company[177]) else 5
 		
 		for pm in pm_app:
 			pm_name = pm[1] + pm[2]
