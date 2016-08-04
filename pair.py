@@ -1,14 +1,15 @@
 import app_consumer
+import sys
 from munkres import Munkres, print_matrix
 
 
-pm_app = app_consumer.consume_app('PM.xlsx')
-company_app = app_consumer.consume_app('company.xlsx')
+company_app = app_consumer.consume_app(sys.argv[1])
+pm_app = app_consumer.consume_app(sys.argv[2])
 
 if len(pm_app) != len(company_app):
 	print 'Number of companies does not match the number of Project Managers'
-	print len(pm_app)
-	print len(company_app)
+	print repr(pm_app)
+	print repr(company_app)
 	raise SystemExit
 
 cost_matrix = app_consumer.create_cost_matrix(company_app, pm_app)
