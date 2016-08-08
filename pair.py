@@ -24,10 +24,11 @@ cost_matrix = cost_matrix[2:]
 # print repr(cost_matrix)
 
 # print_matrix(cost_matrix,msg='Cost Matrix:')
+print repr(cost_matrix)
 m = Munkres()
 inexes_of_pairs = m.compute(cost_matrix)
 
 for row, column in inexes_of_pairs:
-	print ('company: {}, PM: {}').format(list_of_companies[row], list_of_pms[column])
+	print ('company: {}, PM: {}').format(list_of_companies[column], list_of_pms[row])
 
 

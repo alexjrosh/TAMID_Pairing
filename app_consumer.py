@@ -10,7 +10,7 @@ def consume_app(app):
 
 def create_cost_matrix(company_app, pm_app):
 	name_of_companies = []
-	name_of_pms = set()
+	name_of_pms = []
 	cost_matrix = []
 
 	for company in company_app:
@@ -92,7 +92,10 @@ def create_cost_matrix(company_app, pm_app):
 			cost = ((project_type_match_score/number_of_projects)**2)+skill_score
 
 			cost_matrix_row.append(cost)
-			name_of_pms.add(pm_name)
+			if pm_name not in name_of_pms:
+				name_of_pms.append(pm_name)
+
+			print name_of_pms
 
 		cost_matrix.append(cost_matrix_row)
 		# print '========================================'
