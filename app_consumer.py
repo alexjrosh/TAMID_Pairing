@@ -79,7 +79,12 @@ def create_cost_matrix(company_app, pm_app):
 
 			skill_score = 0
 			for skill in list_of_skills:
-				skill_score += ((company_skills[skill]-pm_skills[skill])*(float(company_skills[skill])/sum_of_company_skill))
+				#***********************************************************
+				#	This is the penalty, I am commenting it out 
+				# 	and replacing it with the delta of company and pm skill
+				#***********************************************************
+				# skill_score += ((company_skills[skill]-pm_skills[skill])*(float(company_skills[skill])/sum_of_company_skill))
+				skill_score += company_skills[skill]-pm_skills[skill]
 
 			# print 'number of proj '+str(pm_name)+': '+str(number_of_projects)
 			# print 'project_type_match_score-'+str(company_name)+', '+str(pm_name)+': '+str(project_type_match_score)
