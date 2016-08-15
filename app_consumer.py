@@ -91,9 +91,7 @@ def create_cost_matrix(company_app, pm_app):
 				if not pandas.isnull(industry):
 					number_of_industries_listed += 1
 					if industry in pm_industry_choices:
-						industry_match_score -= (4-pm_industry_choices[industry]) 
-					else:
-						industry_match_score +=4
+						industry_match_score += (4-pm_industry_choices[industry]) 
 
 			#calculate score to represent how well company and PM match on skills
 			list_of_skills = ['internet_search', 'current_events', 'business', 'creativity', 'technology', 'sociability', 'communication', 'flexibility', 'presentation', 'working_with_a_team']
@@ -116,7 +114,7 @@ def create_cost_matrix(company_app, pm_app):
 			# print 'skill_score-'+str(company_name)+', '+str(pm_name)+': '+str(skill_score)
 
 			#calculate total match score based on project type, industry and skill match scores
-			cost = ((project_type_match_score/number_of_projects)**2)+(industry_match_score/number_of_industries_listed)+skill_score
+			cost = ((project_type_match_score/number_of_projects)**2)-(industry_match_score)+skill_score
 
 			cost_matrix_row.append(cost)
 			if pm_name not in name_of_pms:
